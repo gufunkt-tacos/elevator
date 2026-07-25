@@ -8,8 +8,11 @@
 [ext_resource type="Script" uid="uid://dm8tqd00p3xt1" path="res://player.gd" id="5_7mycd"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_68pkx"]
-render_priority = 0
 shader = ExtResource("1_h2yge")
+shader_parameter/enabled = true
+shader_parameter/dithering = true
+shader_parameter/colors = 12
+shader_parameter/dither_size = 1
 
 [sub_resource type="Environment" id="Environment_68pkx"]
 glow_enabled = true

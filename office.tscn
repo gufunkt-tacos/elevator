@@ -1,46 +1,8 @@
 [gd_scene format=3 uid="uid://sqdppkaesf8i"]
 
-[ext_resource type="Texture2D" uid="uid://bl4q0k2i1mvmy" path="res://Assets/Materials/Carpet/dirty_carpet_diff_4k.jpg" id="1_4i814"]
-[ext_resource type="PackedScene" uid="uid://dfo7vwcqnf3m5" path="res://wall.tscn" id="1_u8nhc"]
-[ext_resource type="Texture2D" uid="uid://dejnrnhnvxfq0" path="res://Assets/Materials/Carpet/dirty_carpet_ao_4k.jpg" id="2_wruqr"]
-[ext_resource type="Texture2D" uid="uid://bbyybo8j5dv00" path="res://Assets/Materials/Carpet/dirty_carpet_nor_gl_4k.jpg" id="3_lcwox"]
-[ext_resource type="Texture2D" uid="uid://dwwof8a7c1irs" path="res://Assets/Materials/Carpet/dirty_carpet_rough_4k.jpg" id="4_3xqf3"]
-[ext_resource type="Texture2D" uid="uid://cs8osy4p0sfmb" path="res://Assets/Materials/Ceiling/OfficeCeiling001_2K-JPG_Color.jpg" id="5_gxl1f"]
-[ext_resource type="Texture2D" uid="uid://cismup45sg71a" path="res://Assets/Materials/Ceiling/OfficeCeiling001_2K-JPG_AmbientOcclusion.jpg" id="6_2uxut"]
-[ext_resource type="PackedScene" uid="uid://ctttmjkul6iob" path="res://box_wall.tscn" id="6_wruqr"]
-[ext_resource type="Texture2D" uid="uid://bfgs72j461srg" path="res://Assets/Materials/Ceiling/OfficeCeiling001_2K-JPG_Emission.jpg" id="7_n1y4y"]
-[ext_resource type="Texture2D" uid="uid://c6l0ysuqfy8og" path="res://Assets/Materials/Ceiling/OfficeCeiling001_2K-JPG_Metalness.jpg" id="8_m8tx5"]
-[ext_resource type="Texture2D" uid="uid://bvdehrgjvcuk3" path="res://Assets/Materials/Ceiling/OfficeCeiling001_2K-JPG_NormalGL.jpg" id="9_4hetp"]
-[ext_resource type="Texture2D" uid="uid://bkftjryg13vvt" path="res://Assets/Materials/Ceiling/OfficeCeiling001_2K-JPG_Roughness.jpg" id="10_o3cd7"]
 [ext_resource type="PackedScene" uid="uid://bjdl2dxdwyabu" path="res://Assets/Models/Offisssce.blend" id="13_s0aar"]
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_68pkx"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oh6kn"]
-albedo_texture = ExtResource("1_4i814")
-roughness_texture = ExtResource("4_3xqf3")
-normal_enabled = true
-normal_texture = ExtResource("3_lcwox")
-ao_enabled = true
-ao_light_affect = 0.65
-ao_texture = ExtResource("2_wruqr")
-uv1_scale = Vector3(51.2, 51.2, 51.2)
-point_size = 128.0
-
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_68pkx"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0xm2m"]
-albedo_texture = ExtResource("5_gxl1f")
-metallic = 1.0
-metallic_texture = ExtResource("8_m8tx5")
-roughness_texture = ExtResource("10_o3cd7")
-emission_enabled = true
-emission_texture = ExtResource("7_n1y4y")
-normal_enabled = true
-normal_texture = ExtResource("9_4hetp")
-ao_enabled = true
-ao_texture = ExtResource("6_2uxut")
-uv1_scale = Vector3(6.01, 6.01, 6.01)
 
 [sub_resource type="FogMaterial" id="FogMaterial_68pkx"]
 resource_local_to_scene = true
@@ -54,49 +16,9 @@ edge_fade = 0.20705296
 [node name="Floor" type="StaticBody3D" parent="." unique_id=849187853]
 visible = false
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=924534470]
-transform = Transform3D(50.21576, 0, 0, 0, 0.99441874, 0, 0, 0, 69.52522, -2.2495751, 0.40544224, -0.19958782)
-visible = false
-mesh = SubResource("PlaneMesh_68pkx")
-surface_material_override/0 = SubResource("StandardMaterial3D_oh6kn")
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=448221282]
 visible = false
 shape = SubResource("WorldBoundaryShape3D_68pkx")
-
-[node name="Ceiling" type="StaticBody3D" parent="." unique_id=2109932568]
-transform = Transform3D(-0.99999994, 8.742277e-08, 0, -8.742277e-08, -0.99999994, 0, 0, 0, 1, 0, 21.80568, 0)
-visible = false
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Ceiling" unique_id=519301363]
-transform = Transform3D(50.215744, 7.1054274e-15, 0, 0, 0.9944185, 0, 0, 0, 69.52522, -2.2495732, 9.545545, -0.19958782)
-visible = false
-mesh = SubResource("PlaneMesh_68pkx")
-surface_material_override/0 = SubResource("StandardMaterial3D_0xm2m")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Ceiling" unique_id=1072317575]
-visible = false
-shape = SubResource("WorldBoundaryShape3D_68pkx")
-
-[node name="Wall" parent="." unique_id=1493332805 instance=ExtResource("1_u8nhc")]
-transform = Transform3D(6.78, 0, 0, 0, 6.78, 0, 0, 0, 6.78, 38.142746, 9.787673, -131.68791)
-visible = false
-
-[node name="BoxWall" parent="." unique_id=1443726566 instance=ExtResource("6_wruqr")]
-transform = Transform3D(74, 0, 0, 0, 74, 0, 0, 0, 74, 86.94437, 4.338579, 37.892586)
-visible = false
-
-[node name="Wall2" parent="." unique_id=682100267 instance=ExtResource("1_u8nhc")]
-transform = Transform3D(-5.475, 0, 8.26702e-07, 0, 5.475, 0, -8.26702e-07, 0, -5.475, -4.610279, 14.018915, 2.0057182)
-visible = false
-
-[node name="Wall4" parent="." unique_id=53519469 instance=ExtResource("1_u8nhc")]
-transform = Transform3D(-5.475, 0, 8.26702e-07, 0, 5.475, 0, -8.26702e-07, 0, -5.475, -4.610279, 14.018915, 2.0057182)
-visible = false
-
-[node name="Wall3" parent="." unique_id=229489007 instance=ExtResource("1_u8nhc")]
-transform = Transform3D(-2.4893637e-07, 0, 5.695, 0, 5.695, 0, -5.695, 0, -2.4893637e-07, 25.760002, 0, -152.79713)
-visible = false
 
 [node name="FogVolume" type="FogVolume" parent="." unique_id=1148957422]
 transform = Transform3D(9.94, 0, 0, 0, 9.94, 0, 0, 0, 9.94, -0.27201986, 18.029644, 50.61474)
