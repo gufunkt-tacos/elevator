@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Elevator"
-run/main_scene="uid://du5pmnw8ixeyc"
+run/main_scene="uid://k2ns3en5s1gq"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 

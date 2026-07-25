@@ -1,4 +1,5 @@
 extends CharacterBody3D
+@onready var subtitle: RichTextLabel = $Camera3D/CanvasLayer/Subtitle
 
 
 const SPEED = 5.0
@@ -30,6 +31,8 @@ func _physics_process(delta: float) -> void:
 	
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	subtitle.show_subtitle("[center]It's 5 p.m. Time to go home.[/center]")
+	
 	
 func _input(event):
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:

@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bmsdykq71kutn"]
+
+[ext_resource type="PackedScene" uid="uid://dktip4y1igtcy" path="res://FinalOffice.blend" id="1_vf0ag"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gof2v"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0)
+metallic = 0.07
+roughness = 0.0
+refraction_enabled = true
+refraction_scale = 0.1
+
+[node name="FinalOffice" unique_id=934088282 instance=ExtResource("1_vf0ag")]
+
+[node name="Node3D" type="Node3D" parent="Elevator_root" parent_id_path=PackedInt32Array(868268343) index="3" unique_id=2087438086]
+transform = Transform3D(0.10821747, 0, 0, 0, 0, 0.10821747, 0, -0.046928234, 0, 3.5617905, 2.4727526, 12.773597)
+
+[node name="Window" parent="." index="7" unique_id=1960517768]
+surface_material_override/0 = SubResource("StandardMaterial3D_gof2v")

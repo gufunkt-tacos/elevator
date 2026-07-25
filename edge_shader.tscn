@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://ud03xfsoh8yk"]
+
+[ext_resource type="Shader" uid="uid://b0nrw0x5vfndb" path="res://edge.gdshader" id="1_0j4lk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_am7si"]
+render_priority = 0
+shader = ExtResource("1_0j4lk")
+
+[sub_resource type="QuadMesh" id="QuadMesh_68pkx"]
+
+[node name="EdgeShader" type="MeshInstance3D" unique_id=2092155993]
+transform = Transform3D(1, 0, 0, 0, 1.4556432, 0, 0, 0, 1, 0, 0, 0)
+material_override = SubResource("ShaderMaterial_am7si")
+extra_cull_margin = 16384.0
+mesh = SubResource("QuadMesh_68pkx")

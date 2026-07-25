@@ -1,10 +1,22 @@
 [gd_scene format=4 uid="uid://k2ns3en5s1gq"]
 
+[ext_resource type="Shader" uid="uid://b5wccfmwryc13" path="res://psx.gdshader" id="1_4a3qj"]
 [ext_resource type="Texture2D" uid="uid://dm1b08ddwj52s" path="res://Assets/Models/UV.png" id="1_ots34"]
+[ext_resource type="Script" uid="uid://cbnjutyoc7gn5" path="res://start_camera.gd" id="2_pob1m"]
 [ext_resource type="FontFile" uid="uid://jppih55hmc77" path="res://shotgun-wedding-font/Shotgunwedding-W0OE.otf" id="2_qn1rc"]
 [ext_resource type="Script" uid="uid://dmiilny10dr5u" path="res://omni_light_3d_12.gd" id="3_1n0d2"]
+[ext_resource type="Script" uid="uid://b3vs5fisisrxl" path="res://control.gd" id="3_g38d0"]
 [ext_resource type="AudioStream" uid="uid://cfx4dg7qmysvq" path="res://Assets/thunder.mp3" id="4_y5hus"]
 [ext_resource type="Shader" uid="uid://b4ml3g1skbyk1" path="res://start.gdshader" id="5_oiuna"]
+[ext_resource type="PackedScene" uid="uid://c2hw5b5d7grks" path="res://fade.tscn" id="7_p0nl4"]
+[ext_resource type="Script" uid="uid://dw5k6accfysw1" path="res://label.gd" id="9_gophc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oiuna"]
+shader = ExtResource("1_4a3qj")
+shader_parameter/enabled = true
+shader_parameter/dithering = true
+shader_parameter/colors = 12
+shader_parameter/dither_size = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sk1ko"]
 resource_name = "Material"
@@ -113,83 +125,100 @@ shader_parameter/blur = 0.002
 shader_parameter/colour = Color(1, 1, 1, 1)
 shader_parameter/size = Vector2(0.005, 0.2)
 
-[node name="Start" type="Node3D" unique_id=59740703]
+[sub_resource type="LabelSettings" id="LabelSettings_68pkx"]
+font = ExtResource("2_qn1rc")
+font_size = 163
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=231069383]
+[node name="SubViewportContainer" type="SubViewportContainer" unique_id=435560668]
+material = SubResource("ShaderMaterial_oiuna")
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=198279490]
+handle_input_locally = false
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="Start" type="Node3D" parent="SubViewport" unique_id=59740703]
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport" unique_id=231069383]
 transform = Transform3D(1, 0, 0, 0, 0.9728488, 0.23144183, 0, -0.23144183, 0.9728488, 0, 111.75511, 87.662674)
 current = true
+script = ExtResource("2_pob1m")
+follow_strength = 6.8100000000000005
+max_offset = 2.35
 
-[node name="Building" type="Node3D" parent="." unique_id=1082236822]
+[node name="Building" type="Node3D" parent="SubViewport" unique_id=1082236822]
 transform = Transform3D(-0.39327785, 0, -0.9194197, 0, 1, 0, 0.9194197, 0, -0.39327785, 0, 0, 0)
 
-[node name="Light" type="MeshInstance3D" parent="Building" unique_id=1592557276]
+[node name="Light" type="MeshInstance3D" parent="SubViewport/Building" unique_id=1592557276]
 transform = Transform3D(10.55464, 0, 0, 0, 1, 0, 0, 0, 10.55464, 0, 0, 0)
 mesh = SubResource("ArrayMesh_ek5xw")
 surface_material_override/0 = SubResource("StandardMaterial3D_ots34")
 
-[node name="Main" type="MeshInstance3D" parent="Building" unique_id=1527697250]
+[node name="Main" type="MeshInstance3D" parent="SubViewport/Building" unique_id=1527697250]
 transform = Transform3D(10.55464, 0, 0, 0, 1, 0, 0, 0, 10.55464, 0, 0, 0)
 mesh = SubResource("ArrayMesh_uwx06")
 surface_material_override/0 = SubResource("StandardMaterial3D_2yopf")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=611434880]
+[node name="OmniLight3D" type="OmniLight3D" parent="SubViewport" unique_id=611434880]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 107.404015, 13.155109)
 light_energy = 3.895
 omni_range = 19.236
 
-[node name="OmniLight3D2" type="OmniLight3D" parent="." unique_id=887476927]
+[node name="OmniLight3D2" type="OmniLight3D" parent="SubViewport" unique_id=887476927]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.281101, 93.55364, 10.152016)
 light_energy = 3.895
 omni_range = 19.236
 
-[node name="OmniLight3D3" type="OmniLight3D" parent="." unique_id=533200740]
+[node name="OmniLight3D3" type="OmniLight3D" parent="SubViewport" unique_id=533200740]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.281101, 82.64325, 10.152016)
 light_energy = 3.895
 omni_range = 19.236
 
-[node name="OmniLight3D4" type="OmniLight3D" parent="." unique_id=1154348027]
+[node name="OmniLight3D4" type="OmniLight3D" parent="SubViewport" unique_id=1154348027]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0981522, 47.583054, 12.15414)
 light_energy = 3.895
 omni_range = 19.236
 
-[node name="OmniLight3D5" type="OmniLight3D" parent="." unique_id=2127957218]
+[node name="OmniLight3D5" type="OmniLight3D" parent="SubViewport" unique_id=2127957218]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.794876, 32.465424, 12.15414)
 light_energy = 3.895
 omni_range = 19.236
 
-[node name="OmniLight3D6" type="OmniLight3D" parent="." unique_id=2045930901]
+[node name="OmniLight3D6" type="OmniLight3D" parent="SubViewport" unique_id=2045930901]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0981522, 17.006882, 12.15414)
 light_energy = 3.895
 omni_range = 19.236
 
-[node name="OmniLight3D7" type="OmniLight3D" parent="." unique_id=1012527192]
+[node name="OmniLight3D7" type="OmniLight3D" parent="SubViewport" unique_id=1012527192]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.071577, 104.66968, 1.0215187)
 light_energy = 3.895
 omni_range = 19.236
 
-[node name="OmniLight3D8" type="OmniLight3D" parent="." unique_id=402711182]
+[node name="OmniLight3D8" type="OmniLight3D" parent="SubViewport" unique_id=402711182]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.071577, 94.283516, 8.902214)
 light_energy = 3.895
 omni_range = 19.236
 
-[node name="OmniLight3D9" type="OmniLight3D" parent="." unique_id=1080239584]
+[node name="OmniLight3D9" type="OmniLight3D" parent="SubViewport" unique_id=1080239584]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.071577, 55.595726, 8.902214)
 light_energy = 3.895
 omni_range = 19.236
 
-[node name="OmniLight3D10" type="OmniLight3D" parent="." unique_id=1699468362]
+[node name="OmniLight3D10" type="OmniLight3D" parent="SubViewport" unique_id=1699468362]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.071577, 25.30716, 1.0215187)
 light_energy = 3.895
 omni_range = 19.236
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=822448201]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewport" unique_id=822448201]
 environment = SubResource("Environment_ots34")
 
-[node name="FogVolume" type="FogVolume" parent="." unique_id=1362930474]
+[node name="FogVolume" type="FogVolume" parent="SubViewport" unique_id=1362930474]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.9921923, 122.875626, 13.703069)
 size = Vector3(5, 5, 5)
 
-[node name="OmniLight3D11" type="OmniLight3D" parent="." unique_id=919994080]
+[node name="OmniLight3D11" type="OmniLight3D" parent="SubViewport" unique_id=919994080]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.3783126, 120.03341, 15.599307)
 light_color = Color(1, 0, 0, 1)
 light_energy = 15.675
@@ -198,24 +227,7 @@ light_volumetric_fog_energy = 1.16
 omni_range = 13.566
 omni_attenuation = 0.2
 
-[node name="Control" type="Control" parent="." unique_id=1684754054]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Button" type="Button" parent="Control" unique_id=1460162477]
-layout_mode = 0
-offset_left = 430.0
-offset_top = 429.0
-offset_right = 748.0
-offset_bottom = 581.0
-theme_override_fonts/font = ExtResource("2_qn1rc")
-theme_override_font_sizes/font_size = 90
-text = "PLAY"
-flat = true
-
-[node name="OmniLight3D12" type="OmniLight3D" parent="." unique_id=600041912]
+[node name="OmniLight3D12" type="OmniLight3D" parent="SubViewport" unique_id=600041912]
 transform = Transform3D(1, 0, 0, 0, 0.9728488, 0.23144183, 0, -0.23144183, 0.9728488, -88.711784, 111.75511, -7.820984)
 light_energy = 1019.58
 omni_range = 405.845
@@ -225,7 +237,46 @@ thunder_volume_db = -20.0
 thunder_lead_time = 1.0
 thunder_sounds = Array[AudioStream]([ExtResource("4_y5hus")])
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=513637461]
+[node name="ColorRect" type="ColorRect" parent="SubViewport" unique_id=513637461]
 material = SubResource("ShaderMaterial_68pkx")
 offset_right = 1158.0
 offset_bottom = 658.0
+
+[node name="Fade" parent="SubViewport" unique_id=458597509 instance=ExtResource("7_p0nl4")]
+
+[node name="fade_timer" type="Timer" parent="SubViewport/Fade" unique_id=1957721782]
+
+[node name="Control" type="Control" parent="." unique_id=1684754054]
+layout_mode = 2
+script = ExtResource("3_g38d0")
+
+[node name="Play" type="Button" parent="Control" unique_id=1460162477]
+layout_mode = 0
+offset_left = 436.0
+offset_top = 443.0
+offset_right = 754.0
+offset_bottom = 595.0
+scale = Vector2(0.8800012, 0.8)
+theme_override_fonts/font = ExtResource("2_qn1rc")
+theme_override_font_sizes/font_size = 90
+action_mode = 0
+text = "PLAY"
+flat = true
+
+[node name="Label" type="Label" parent="Control" unique_id=845427967]
+layout_mode = 0
+offset_left = 216.0
+offset_top = 68.0
+offset_right = 1035.0
+offset_bottom = 374.0
+scale = Vector2(0.7599994, 0.60544777)
+text = "ELEVATOR"
+label_settings = SubResource("LabelSettings_68pkx")
+horizontal_alignment = 1
+script = ExtResource("9_gophc")
+rise_amount = 6.575
+rise_duration = 2.355
+jostle_strength = 3.285
+jostle_speed = 3.37
+
+[connection signal="pressed" from="Control/Play" to="Control" method="_on_play_pressed"]

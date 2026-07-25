@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cgcmmicb4theq"]
+
+[ext_resource type="PackedScene" uid="uid://cnhoua6jeeyxf" path="res://Assets/Models/OFFICES.blend" id="1_glciv"]
+
+[node name="OFFICES" unique_id=467806478 instance=ExtResource("1_glciv")]
+
+[node name="Window" parent="." index="7" unique_id=1399749100]
+transform = Transform3D(6.25, 0, 0, 0, 3, 0, 0, 0, 6.5, 15.815366, 1.6282295, 1.1110646)
+visible = false
