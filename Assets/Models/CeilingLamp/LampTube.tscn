@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://cral2jp67puo4"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_68pkx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_am7si"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 8.98
+
+[node name="MeshInstance3D" type="MeshInstance3D" unique_id=1092259860]
+transform = Transform3D(0.039999995, 0, 0, 0, 0.047761455, -4.7406523e-14, 0, 5.684342e-14, 0.04000001, 0, 0, 0)
+mesh = SubResource("CylinderMesh_68pkx")
+surface_material_override/0 = SubResource("StandardMaterial3D_am7si")

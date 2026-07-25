@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://du5pmnw8ixeyc"]
+
+[ext_resource type="Script" uid="uid://6mcq3t3bwfdu" path="res://main.gd" id="1_0xm2m"]
+[ext_resource type="Shader" uid="uid://b5wccfmwryc13" path="res://psx.gdshader" id="1_h2yge"]
+[ext_resource type="PackedScene" uid="uid://sqdppkaesf8i" path="res://office.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://k2ns3en5s1gq" path="res://start.tscn" id="2_7mycd"]
+[ext_resource type="PackedScene" uid="uid://bxexej0gs8u7j" path="res://player.tscn" id="4_lquwl"]
+[ext_resource type="Script" uid="uid://dm8tqd00p3xt1" path="res://player.gd" id="5_7mycd"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_68pkx"]
+render_priority = 0
+shader = ExtResource("1_h2yge")
+
+[sub_resource type="Environment" id="Environment_68pkx"]
+glow_enabled = true
+fog_light_energy = 0.0
+fog_density = 0.0
+volumetric_fog_density = 0.2
+volumetric_fog_albedo = Color(0, 0, 0, 1)
+
+[node name="SubViewportContainer" type="SubViewportContainer" unique_id=41125533]
+material = SubResource("ShaderMaterial_68pkx")
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1218004235]
+handle_input_locally = false
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="Start" parent="SubViewport" unique_id=59740703 instance=ExtResource("2_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2529.1875, 0, 0)
+
+[node name="Main" type="Node3D" parent="SubViewport" unique_id=1415208348]
+visible = false
+script = ExtResource("1_0xm2m")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewport/Main" unique_id=1529298130]
+environment = SubResource("Environment_68pkx")
+
+[node name="Office" parent="SubViewport/Main" unique_id=946707933 instance=ExtResource("1_ig7tw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.415016, 3.2457523, -1.0908602)
+
+[node name="Player" parent="SubViewport" unique_id=1683739514 instance=ExtResource("4_lquwl")]
+transform = Transform3D(1, 0, 0, 0, 0.68698156, 0, 0, 0, 1, -22.261288, 5.8530884, -7.283959)
+visible = false
+script = ExtResource("5_7mycd")

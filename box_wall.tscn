@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://ctttmjkul6iob"]
+
+[ext_resource type="Material" uid="uid://bddw3yb8osv78" path="res://Assets/Materials/Wallpaper/Wallpaper.tres" id="1_npa3m"]
+[ext_resource type="Texture2D" uid="uid://ch47f2c0wd8hk" path="res://Assets/Materials/Wallpaper/Wallpaper001A_2K-JPG_Color.jpg" id="1_una6o"]
+[ext_resource type="Texture2D" uid="uid://bfq0uufqyabx7" path="res://Assets/Materials/Wallpaper/Wallpaper001A_2K-JPG_NormalGL.jpg" id="2_npa3m"]
+[ext_resource type="Texture2D" uid="uid://ljrkkxjrwi0i" path="res://Assets/Materials/Wallpaper/Wallpaper001A_2K-JPG_Roughness.jpg" id="3_m8u7n"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_rc0ec"]
+material = ExtResource("1_npa3m")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sh265"]
+albedo_texture = ExtResource("1_una6o")
+roughness_texture = ExtResource("3_m8u7n")
+normal_enabled = true
+normal_texture = ExtResource("2_npa3m")
+uv1_scale = Vector3(9.83, 9.83, 9.83)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g7ki8"]
+
+[node name="BoxWall" type="StaticBody3D" unique_id=1443726566]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=998487455]
+transform = Transform3D(-7.54979e-08, 1, -8.742278e-08, 1, 7.54979e-08, 0, 6.600236e-15, -8.742278e-08, -1, 0, 0, 0)
+mesh = SubResource("BoxMesh_rc0ec")
+surface_material_override/0 = SubResource("StandardMaterial3D_sh265")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=461954228]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_g7ki8")

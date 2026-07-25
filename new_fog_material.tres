@@ -1,0 +1,6 @@
+[gd_resource type="FogMaterial" format=3 uid="uid://da08ccekc1l7f"]
+
+[resource]
+density = 2.1512
+albedo = Color(0.5409905, 0.5409905, 0.5409905, 1)
+emission = Color(0.48178947, 0.48178947, 0.48178947, 1)
