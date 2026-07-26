@@ -6,17 +6,16 @@
 [ext_resource type="FontFile" uid="uid://jppih55hmc77" path="res://shotgun-wedding-font/Shotgunwedding-W0OE.otf" id="2_qn1rc"]
 [ext_resource type="Script" uid="uid://dmiilny10dr5u" path="res://omni_light_3d_12.gd" id="3_1n0d2"]
 [ext_resource type="Script" uid="uid://b3vs5fisisrxl" path="res://control.gd" id="3_g38d0"]
+[ext_resource type="Material" uid="uid://cb0urqtq8j1uk" path="res://LightRED.tres" id="3_r8ukj"]
+[ext_resource type="Script" uid="uid://csql5nj0roi8m" path="res://red_light.gd" id="4_da165"]
 [ext_resource type="AudioStream" uid="uid://cfx4dg7qmysvq" path="res://Assets/thunder.mp3" id="4_y5hus"]
 [ext_resource type="Shader" uid="uid://b4ml3g1skbyk1" path="res://start.gdshader" id="5_oiuna"]
 [ext_resource type="PackedScene" uid="uid://c2hw5b5d7grks" path="res://fade.tscn" id="7_p0nl4"]
 [ext_resource type="Script" uid="uid://dw5k6accfysw1" path="res://label.gd" id="9_gophc"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_oiuna"]
+render_priority = 0
 shader = ExtResource("1_4a3qj")
-shader_parameter/enabled = true
-shader_parameter/dithering = true
-shader_parameter/colors = 12
-shader_parameter/dither_size = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sk1ko"]
 resource_name = "Material"
@@ -55,12 +54,6 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_4fhvn")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ots34"]
-albedo_color = Color(0.9126515, 0.020531591, 0.16449922, 1)
-emission_enabled = true
-emission = Color(1, 0, 0, 1)
-emission_energy_multiplier = 16.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5rkwj"]
 resource_name = "Material.001"
@@ -154,7 +147,7 @@ transform = Transform3D(-0.39327785, 0, -0.9194197, 0, 1, 0, 0.9194197, 0, -0.39
 [node name="Light" type="MeshInstance3D" parent="SubViewport/Building" unique_id=1592557276]
 transform = Transform3D(10.55464, 0, 0, 0, 1, 0, 0, 0, 10.55464, 0, 0, 0)
 mesh = SubResource("ArrayMesh_ek5xw")
-surface_material_override/0 = SubResource("StandardMaterial3D_ots34")
+surface_material_override/0 = ExtResource("3_r8ukj")
 
 [node name="Main" type="MeshInstance3D" parent="SubViewport/Building" unique_id=1527697250]
 transform = Transform3D(10.55464, 0, 0, 0, 1, 0, 0, 0, 10.55464, 0, 0, 0)
@@ -218,7 +211,7 @@ environment = SubResource("Environment_ots34")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.9921923, 122.875626, 13.703069)
 size = Vector3(5, 5, 5)
 
-[node name="OmniLight3D11" type="OmniLight3D" parent="SubViewport" unique_id=919994080]
+[node name="OmniLight3D11" type="OmniLight3D" parent="SubViewport" unique_id=919994080 node_paths=PackedStringArray("glow_mesh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.3783126, 120.03341, 15.599307)
 light_color = Color(1, 0, 0, 1)
 light_energy = 15.675
@@ -226,6 +219,9 @@ light_indirect_energy = 2.28
 light_volumetric_fog_energy = 1.16
 omni_range = 13.566
 omni_attenuation = 0.2
+script = ExtResource("4_da165")
+toggle_time = 0.5
+glow_mesh = NodePath("../Building/Light")
 
 [node name="OmniLight3D12" type="OmniLight3D" parent="SubViewport" unique_id=600041912]
 transform = Transform3D(1, 0, 0, 0, 0.9728488, 0.23144183, 0, -0.23144183, 0.9728488, -88.711784, 111.75511, -7.820984)

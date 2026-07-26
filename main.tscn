@@ -42,6 +42,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.415016, 3.2457523, -1.090
 [node name="ColorRect" parent="SubViewport/Main" unique_id=458597509 instance=ExtResource("4_7mycd")]
 offset_left = 26.0
 offset_right = 1246.0
+mouse_filter = 2
 
 [node name="Player" parent="SubViewport" unique_id=1683739514 instance=ExtResource("4_lquwl")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 0.68698156, 0, 1, 0, -4.371139e-08, -35.918617, 5.8530884, 2.320075)
